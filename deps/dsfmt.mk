@@ -43,8 +43,7 @@ define DSFMT_INSTALL
 endef
 $(eval $(call staged-install, \
 	dsfmt,dsfmt-$(DSFMT_VER), \
-	DSFMT_INSTALL,, \
-	$$(DSFMT_OBJ_TARGET), \
+	DSFMT_INSTALL,,, \
 	$$(INSTALL_NAME_CMD)libdSFMT.$$(SHLIB_EXT) $$(build_shlibdir)/libdSFMT.$$(SHLIB_EXT)))
 
 clean-dsfmt:
