@@ -144,6 +144,9 @@ ifeq ($(USE_SYSTEM_P7ZIP), 0)
 DEP_LIBS += p7zip
 endif
 
+ifeq ($(USE_SYSTEM_CSL), 0)
+DEP_LIBS += csl
+endif
 
 # Only compile standalone LAPACK if we are not using OpenBLAS.
 # OpenBLAS otherwise compiles LAPACK as part of its build.
@@ -180,7 +183,7 @@ install: $(addprefix install-, $(DEP_LIBS))
 cleanall: $(addprefix clean-, $(DEP_LIBS))
 distcleanall: $(addprefix distclean-, $(DEP_LIBS))
 	rm -rf $(build_prefix)
-getall: get-llvm get-libuv get-pcre get-openlibm get-dsfmt get-openblas get-lapack get-suitesparse get-unwind get-osxunwind get-gmp get-mpfr get-patchelf get-utf8proc get-objconv get-mbedtls get-libssh2 get-nghttp2 get-curl get-libgit2 get-libwhich
+getall: get-llvm get-libuv get-pcre get-openlibm get-dsfmt get-openblas get-lapack get-suitesparse get-unwind get-osxunwind get-gmp get-mpfr get-patchelf get-utf8proc get-objconv get-mbedtls get-libssh2 get-nghttp2 get-curl get-libgit2 get-libwhich get-csl
 
 include $(SRCDIR)/llvm.mk
 include $(SRCDIR)/libuv.mk
@@ -203,5 +206,6 @@ include $(SRCDIR)/libgit2.mk
 include $(SRCDIR)/libwhich.mk
 include $(SRCDIR)/zlib.mk
 include $(SRCDIR)/p7zip.mk
+include $(SRCDIR)/csl.mk
 
 include $(SRCDIR)/tools/uninstallers.mk
